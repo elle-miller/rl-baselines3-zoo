@@ -64,33 +64,33 @@ for env_id in MaskVelocityWrapper.velocity_indices.keys():
     )
 
 # added
-from internal.tactile_testing.src.utils import HandManipulateEggWrapper
+# from internal.tactile_testing.src.utils import HandManipulateEggWrapper
 
-def create_inhand_env(env_id: str) -> Callable[[Optional[str]], gym.Env]:
-    def make_env(render_mode: Optional[str] = None) -> gym.Env:
-        env = gym.make(env_id, render_mode=render_mode)
-        env = HandManipulateEggWrapper(env)
-        return env
-    return make_env
+# def create_inhand_env(env_id: str) -> Callable[[Optional[str]], gym.Env]:
+#     def make_env(render_mode: Optional[str] = None) -> gym.Env:
+#         env = gym.make(env_id, render_mode=render_mode)
+#         env = HandManipulateEggWrapper(env)
+#         return env
+#     return make_env
 
-env_id = "HandManipulateEgg_TouchGrid-v1"
-register(
-    id=env_id,
-    entry_point=create_inhand_env(env_id),  # type: ignore[arg-type]
-)
+# env_id = "HandManipulateEgg_TouchGrid-v1"
+# register(
+#     id=env_id,
+#     entry_point=create_inhand_env(env_id),  # type: ignore[arg-type]
+# )
 
-def _merge(a, b):
-        a.update(b)
-        return a
+# def _merge(a, b):
+#         a.update(b)
+#         return a
 
-register(
-    id=f"HandManipulateEgg-v1",
-    entry_point="gymnasium_robotics.envs.shadow_dexterous_hand.manipulate_egg:MujocoHandEggEnv",
-    kwargs=_merge(
-        {
-            "target_position": "random",
-            "target_rotation": "xyz",
-        },
-    ),
-    max_episode_steps=100,
-)
+# register(
+#     id=f"HandManipulateEgg-v1",
+#     entry_point="gymnasium_robotics.envs.shadow_dexterous_hand.manipulate_egg:MujocoHandEggEnv",
+#     kwargs=_merge(
+#         {
+#             "target_position": "random",
+#             "target_rotation": "xyz",
+#         },
+#     ),
+#     max_episode_steps=100,
+# )
