@@ -63,6 +63,8 @@ for env_id in MaskVelocityWrapper.velocity_indices.keys():
         entry_point=create_no_vel_env(env_id),  # type: ignore[arg-type]
     )
 
+# added
+# from internal.tactile_testing.src.utils import HandManipulateEggWrapper
 
 # def create_inhand_env(env_id: str) -> Callable[[Optional[str]], gym.Env]:
 #     def make_env(render_mode: Optional[str] = None) -> gym.Env:
@@ -85,9 +87,18 @@ for env_id in MaskVelocityWrapper.velocity_indices.keys():
 #     id=f"HandManipulateEgg_TouchGrid-v1",
 #     entry_point="touch_gym.envs.hme_touchgrid:MujocoHandEggTouchGridSensorsEnv",
 #     kwargs=
+# def _merge(a, b):
+#         a.update(b)
+#         return a
+
+# register(
+#     id=f"HandManipulateEgg-v1",
+#     entry_point="gymnasium_robotics.envs.shadow_dexterous_hand.manipulate_egg:MujocoHandEggEnv",
+#     kwargs=_merge(
 #         {
 #             "target_position": "random",
 #             "target_rotation": "xyz",
 #         },
+#     ),
 #     max_episode_steps=100,
 # )
