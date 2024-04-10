@@ -78,3 +78,19 @@ register(
     id=env_id,
     entry_point=create_inhand_env(env_id),  # type: ignore[arg-type]
 )
+
+def _merge(a, b):
+        a.update(b)
+        return a
+
+register(
+    id=f"HandManipulateEgg-v1",
+    entry_point="gymnasium_robotics.envs.shadow_dexterous_hand.manipulate_egg:MujocoHandEggEnv",
+    kwargs=_merge(
+        {
+            "target_position": "random",
+            "target_rotation": "xyz",
+        },
+    ),
+    max_episode_steps=100,
+)
